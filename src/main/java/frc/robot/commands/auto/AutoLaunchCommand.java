@@ -15,8 +15,8 @@ public class AutoLaunchCommand extends CommandBase {
 
   public AutoLaunchCommand(long time) {
     // Use addRequirements() here to declare subsystem dependencies.
-    addRequirements(Robot.LauncherFXSubsystem);
-    addRequirements(Robot.LauncherSRXSubsystem);
+    addRequirements(Robot.FlywheelSubsystem);
+    addRequirements(Robot.FeederSubsystem);
     endTime = time;
   }
 
@@ -29,15 +29,15 @@ public class AutoLaunchCommand extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    Robot.LauncherSRXSubsystem.setLauncherPercent(0.3);
-    Robot.LauncherFXSubsystem.setLauncherPercent(0.5);
+    Robot.FeederSubsystem.setLauncherPercent(0.3);
+    Robot.FlywheelSubsystem.setLauncherPercent(0.5);
   }
 
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-    Robot.LauncherSRXSubsystem.setLauncherPercent(0.0);
-    Robot.LauncherFXSubsystem.setLauncherPercent(0.0);
+    Robot.FeederSubsystem.setLauncherPercent(0.0);
+    Robot.FlywheelSubsystem.setLauncherPercent(0.0);
   }
 
   // Returns true when the command should end.

@@ -14,6 +14,6 @@ public class LauncherCommandGroup extends SequentialCommandGroup {
   /** Creates a new LauncherCommandGroup. */
 
   public LauncherCommandGroup() {
-    addCommands(new TalonFXPercentCommand(), new WaitCommand(1.5), new TalonSRXPercentCommand());
+    addCommands(new FlywheelPercentCommand(), new WaitCommand(1.5), new FeederPercentCommand());
   }
 }

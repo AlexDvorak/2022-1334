@@ -7,11 +7,11 @@ package frc.robot.commands.launcher_commands;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.Robot;
 
-public class TalonSRXPercentCommand extends CommandBase {
+public class FeederPercentCommand extends CommandBase {
   /** Creates a new TalonSRXPercentCommand. */
-  public TalonSRXPercentCommand() {
+  public FeederPercentCommand() {
     // Use addRequirements() here to declare subsystem dependencies.
-    addRequirements(Robot.LauncherSRXSubsystem);
+    addRequirements(Robot.FeederSubsystem);
   }
 
   // Called when the command is initially scheduled.
@@ -21,13 +21,13 @@ public class TalonSRXPercentCommand extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    Robot.LauncherSRXSubsystem.setLauncherPercent(0.7);
+    Robot.FeederSubsystem.setLauncherPercent(0.7);
   }
 
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-    Robot.LauncherSRXSubsystem.setLauncherPercent(0.0);
+    Robot.FeederSubsystem.setLauncherPercent(0.0);
   }
 
   // Returns true when the command should end.

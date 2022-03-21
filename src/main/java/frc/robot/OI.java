@@ -24,8 +24,8 @@ import frc.robot.commands.ToggleSolenoids;
 
 import frc.robot.commands.IntakeCommand;
 import frc.robot.commands.ToggleMirrorSolenoid;
-import frc.robot.commands.launcher_commands.TalonFXPercentCommand;
-import frc.robot.commands.launcher_commands.TalonSRXPercentCommand;
+import frc.robot.commands.launcher_commands.FlywheelPercentCommand;
+import frc.robot.commands.launcher_commands.FeederPercentCommand;
 import frc.robot.commands.climber.PullUpClimberCommand;
 import frc.robot.commands.climber.ReleaseClimberCommand;
 
@@ -86,13 +86,13 @@ public class OI {
 
         // Inititalize the Operator Controls
         OperatorAButton = new JoystickButton(Operator, 1);
-        OperatorAButton.whileHeld(new TalonSRXPercentCommand());
+        OperatorAButton.whileHeld(new FeederPercentCommand());
         
         OperatorBButton = new JoystickButton(Operator, 2);
         OperatorBButton.whileHeld(new IntakeCommand());
 
         OperatorXButton = new JoystickButton(Operator, 3);
-        OperatorXButton.whileHeld(new TalonFXPercentCommand());
+        OperatorXButton.whileHeld(new FlywheelPercentCommand());
         // we need to document our code better
         OperatorYButton = new JoystickButton(Operator, 4);
         OperatorYButton.whileHeld(new IndexerCommand());

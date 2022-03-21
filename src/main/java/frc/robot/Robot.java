@@ -27,9 +27,9 @@ public class Robot extends TimedRobot {
   public static DriveSubsystem DriveSubsystem = new DriveSubsystem();
   public static IndexerSubsystem IndexerSubsystem = new IndexerSubsystem();
   public static IntakeSubsystem IntakeSubsystem = new IntakeSubsystem();
-  public static LauncherFXSubsystem LauncherFXSubsystem = new LauncherFXSubsystem();
-  public static LauncherSRXSubsystem LauncherSRXSubsystem = new LauncherSRXSubsystem();
-  public static SparkMaxClimberSubsystem SparkMaxClimberSubsystem = new SparkMaxClimberSubsystem();
+  public static LauncherFXSubsystem FlywheelSubsystem = new LauncherFXSubsystem();
+  public static LauncherSRXSubsystem FeederSubsystem = new LauncherSRXSubsystem();
+  public static SparkMaxClimberSubsystem ClimberSubsystem = new SparkMaxClimberSubsystem();
 
   public static OI OI = new OI();
 
