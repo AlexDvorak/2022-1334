@@ -10,24 +10,22 @@ CURRENTCODEONBOT
 
 package frc.robot;
 
-import java.sql.Driver;
-
 import edu.wpi.first.wpilibj.XboxController;
 
 // import edu.wpi.first.wpilibj.GenericHID.Hand;
 
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import frc.robot.commands.IndexerCommand;
-import frc.robot.commands.ToggleSolenoids;
 
 //import com.revrobotics.ColorSensorV3;
 
 import frc.robot.commands.IntakeCommand;
 import frc.robot.commands.ToggleMirrorSolenoid;
-import frc.robot.commands.launcher_commands.FlywheelPercentCommand;
-import frc.robot.commands.launcher_commands.FeederPercentCommand;
+import frc.robot.commands.ToggleSolenoids;
 import frc.robot.commands.climber.PullUpClimberCommand;
 import frc.robot.commands.climber.ReleaseClimberCommand;
+import frc.robot.commands.launcher_commands.FeederPercentCommand;
+import frc.robot.commands.launcher_commands.FlywheelPercentCommand;
 
 
 import frc.robot.commands.ClimbTestingForward;

@@ -1,19 +1,17 @@
 package frc.robot.subsystems;
 
+import com.ctre.phoenix.motorcontrol.ControlMode;
+import com.ctre.phoenix.motorcontrol.FeedbackDevice;
+import com.ctre.phoenix.motorcontrol.NeutralMode;
+import com.ctre.phoenix.motorcontrol.can.TalonSRX;
+
+import edu.wpi.first.wpilibj.DigitalInput;
+import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.RobotMap;
 // import com.revrobotics.CANSparkMax;
 // import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 // import com.revrobotics.RelativeEncoder;
 // import com.revrobotics.CANSparkMax.IdleMode;
-
-import com.ctre.phoenix.motorcontrol.can.TalonSRX;
-import com.ctre.phoenix.motion.MotionProfileStatus;
-import com.ctre.phoenix.motorcontrol.ControlMode;
-import com.ctre.phoenix.motorcontrol.FeedbackDevice;
-import com.ctre.phoenix.motorcontrol.NeutralMode;
-import edu.wpi.first.wpilibj.DigitalInput;
-
-import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 public class ClimberSRXSubsystem extends SubsystemBase{
     

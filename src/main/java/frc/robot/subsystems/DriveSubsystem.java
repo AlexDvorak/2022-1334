@@ -12,11 +12,6 @@ DriveSubsystem class for differential drivetrain using 4 NEO brushless motors.
 
 package frc.robot.subsystems;
 
-import edu.wpi.first.wpilibj.drive.DifferentialDrive;
-import edu.wpi.first.wpilibj.motorcontrol.MotorControllerGroup;
-import edu.wpi.first.wpilibj2.command.SubsystemBase;
-import frc.robot.RobotMap;
-
 import com.revrobotics.CANSparkMax;
 // import com.revrobotics.CANSparkMax.ControlType;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
@@ -24,8 +19,10 @@ import com.revrobotics.RelativeEncoder;
 import com.revrobotics.SparkMaxPIDController;
 
 import edu.wpi.first.wpilibj.DoubleSolenoid;
-import edu.wpi.first.wpilibj.PneumaticsModuleType;
-import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
+import edu.wpi.first.wpilibj.drive.DifferentialDrive;
+import edu.wpi.first.wpilibj.motorcontrol.MotorControllerGroup;
+import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import frc.robot.RobotMap;
 
 // import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 // import edu.wpi.first.wpilibj.motorcontrol.MotorControllerGroup;

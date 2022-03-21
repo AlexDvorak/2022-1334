@@ -16,9 +16,8 @@ Indexer Subsystem, helps to sort/push the ball to fit into the conveyer, and pre
 
 package frc.robot.commands;
 
-import frc.robot.Robot;
-
 import edu.wpi.first.wpilibj2.command.CommandBase;
+import frc.robot.Robot;
 
 public class IndexerCommand extends CommandBase {
 

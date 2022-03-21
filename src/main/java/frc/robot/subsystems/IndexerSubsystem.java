@@ -18,14 +18,11 @@ Indexer Subsystem, helps to sort/push the ball to fit into the conveyer, and pre
 
 package frc.robot.subsystems;
 
-import frc.robot.RobotMap;
+import com.ctre.phoenix.motorcontrol.ControlMode;
+import com.ctre.phoenix.motorcontrol.can.TalonFX; //changed to FX since motors are Falcons now - Zoey
 
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
-
-import com.ctre.phoenix.motorcontrol.ControlMode;
-import com.ctre.phoenix.motorcontrol.FeedbackDevice;
-
-import com.ctre.phoenix.motorcontrol.can.TalonFX; //changed to FX since motors are Falcons now - Zoey
+import frc.robot.RobotMap;
 
 
 

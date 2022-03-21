@@ -12,12 +12,12 @@ LauncherFXSubsystem class for motor controllers of TalonFX motors. (Big wheel on
 
 package frc.robot.subsystems;
 
-import frc.robot.RobotMap;
-import com.ctre.phoenix.motorcontrol.can.TalonFX;
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.FeedbackDevice;
+import com.ctre.phoenix.motorcontrol.can.TalonFX;
 
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import frc.robot.RobotMap;
 
 // Talon FX is the small motor
 public class LauncherFXSubsystem extends SubsystemBase{
