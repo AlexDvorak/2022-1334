@@ -43,9 +43,6 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void robotInit() {
-    // set DriveCommand as the command to run when the DriveSubsystem isn't being used by another command
-    DriveSubsystem.setDefaultCommand(new DriveCommand());
-
     // Add autonomous options to autonomous chooser
     autonChooser.setDefaultOption("Default Auto", new AutoSequence());
 
@@ -94,7 +91,10 @@ public class Robot extends TimedRobot {
 
   /** This function is called once when teleop is enabled. */
   @Override
-  public void teleopInit() {}
+  public void teleopInit() {
+    // set DriveCommand as the command to run when the DriveSubsystem isn't being used by another command
+    DriveSubsystem.setDefaultCommand(new DriveCommand());
+  }
 
   /** This function is called once when the robot is disabled. */
   @Override
