@@ -26,7 +26,6 @@ public class LauncherFXSubsystem extends SubsystemBase{
   TalonFX LauncherRight;
 
   public LauncherFXSubsystem() {
-
     LauncherLeft = new TalonFX(RobotMap.LauncherLeft);
     LauncherRight = new TalonFX(RobotMap.LauncherRight);
     
@@ -39,13 +38,6 @@ public class LauncherFXSubsystem extends SubsystemBase{
     
     // Invert the first Talon (Left and Right can now run the same Velocity PID RPM)
     LauncherLeft.setInverted(true);
-
-    // Configure the peak output (max in magnitude both forwards and reverse) for the first Talon
-    LauncherLeft.configPeakOutputForward(1);
-    LauncherLeft.configPeakOutputReverse(-1);
-    LauncherRight.configPeakOutputForward(1);
-    LauncherRight.configPeakOutputReverse(-1);
-
   }
 
   // This void method sets a velocity PID setpoint on the Talons

@@ -39,13 +39,8 @@ public class IndexerSubsystem extends SubsystemBase {
   TalonFX LowerIndexer;
 
   public IndexerSubsystem() {
-    //IndexerMotor1 is set to channel ID 9 in RobotMap.java
-    //IndexerMotor2 is set to channel ID 6 in RobotMap.java
     HigherIndexer = new TalonFX(RobotMap.HigherIndexer);
     LowerIndexer = new TalonFX(RobotMap.LowerIndexer);
-  
-    HigherIndexer.configSelectedFeedbackSensor(FeedbackDevice.IntegratedSensor, 0, 0);
-    LowerIndexer.configSelectedFeedbackSensor(FeedbackDevice.IntegratedSensor, 0, 0);
 
     HigherIndexer.configPeakOutputForward(0.1);
     HigherIndexer.configPeakOutputReverse(-0.1);

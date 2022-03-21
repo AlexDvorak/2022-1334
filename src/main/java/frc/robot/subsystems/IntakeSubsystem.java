@@ -25,19 +25,13 @@ public class IntakeSubsystem extends SubsystemBase {
     // A new motor controller object to control the 775 motor
     TalonSRX intakeMotor;
 
-    // boolean toggle = false;
     DoubleSolenoid IntakeSol;
 
     public IntakeSubsystem() {
         IntakeSol = new DoubleSolenoid(PneumaticsModuleType.CTREPCM, 2, 3);
-        // Initialize the solenoid to start on reverse
+        // Start with Intake up
         IntakeSol.set(Value.kReverse);
         intakeMotor = new TalonSRX(RobotMap.intakeMotor);
-
-        // intakeMotor.configSelectedFeedbackSensor(FeedbackDevice.IntegratedSensor, 0, 0);
-
-        intakeMotor.configPeakOutputForward(1.0);
-        intakeMotor.configPeakOutputReverse(-1.0);
     }
 
     // This method makes the motor spin based on a percentage based voltage input
@@ -52,13 +46,11 @@ public class IntakeSubsystem extends SubsystemBase {
         //     setPercentOutput(-0.25);
         // }
         setPercentOutput(0.5);
-           
     }
 
     // toggles the solenoid to get intake up and down
     public void toggleSolenoid() {
         IntakeSol.toggle();
-        
     }
 
     public void closeSolenoid() {

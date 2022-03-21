@@ -25,17 +25,7 @@ public class LauncherSRXSubsystem extends SubsystemBase{
 
     public LauncherSRXSubsystem() {
         LauncherSmallWheel = new TalonSRX(RobotMap.LauncherSmallWheel);
-
         LauncherSmallWheel.configSelectedFeedbackSensor(FeedbackDevice.IntegratedSensor, 0, 0);
-        // Config PID 
-        //Launcher3.config_kP(0, P);
-        //Launcher3.config_kI(0, I);
-        //Launcher3.config_kD(0, D);
-        //Launcher3.config_kF(0, FF); 
-
-        LauncherSmallWheel.configPeakOutputForward(1);
-        LauncherSmallWheel.configPeakOutputReverse(-1);
-
     } 
  
     public void setLauncherVelocity (double setpoint) {
