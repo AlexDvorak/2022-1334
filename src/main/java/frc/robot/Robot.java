@@ -7,6 +7,7 @@ package frc.robot;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
 import frc.robot.subsystems.*;
 import frc.robot.commands.auto.*;
@@ -19,10 +20,8 @@ import frc.robot.commands.*;
  * project.
  */
 public class Robot extends TimedRobot {
-  private static final String kDefaultAuto = "Default";
-  private static final String kCustomAuto = "My Auto";
-  private String m_autoSelected;
-  private final SendableChooser<String> autonChooser = new SendableChooser<>();
+  private final SendableChooser<Command> autonChooser = new SendableChooser<>();
+  private Command autonomousCommand;
 
   // Initializing subsystems:
   public static DriveSubsystem DriveSubsystem = new DriveSubsystem();
@@ -48,8 +47,7 @@ public class Robot extends TimedRobot {
     DriveSubsystem.setDefaultCommand(new DriveCommand());
 
     // Add autonomous options to autonomous chooser
-    autonChooser.setDefaultOption("Default Auto", kDefaultAuto);
-    autonChooser.addOption("My Auto", kCustomAuto);
+    autonChooser.setDefaultOption("Default Auto", new AutoSequence());
 
     // Add autonomous chooser to SmartDashboard
     SmartDashboard.putData("Auto choices", autonChooser);
@@ -87,19 +85,10 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void autonomousInit() {
-    // m_autoSelected = SmartDashboard.getString("Auto Selector", kDefaultAuto);
-    m_autoSelected = autonChooser.getSelected();
-    System.out.println("Auto selected: " + m_autoSelected);
-    switch (m_autoSelected) {
-      case kCustomAuto:
-        new AutoDriveCommand(3000).schedule();
-        new AutoLaunchCommand(3000).schedule();
-        break;
-      case kDefaultAuto:
-      default:
-        new AutoDriveCommand(3000).schedule();
-        new AutoLaunchCommand(3000).schedule();
-        break;
+    autonomousCommand = autonChooser.getSelected();
+    if (autonomousCommand != null) {
+      autonomousCommand.schedule();
+      System.out.println("Auto selected: " + autonomousCommand.getName());
     }
   }
 
