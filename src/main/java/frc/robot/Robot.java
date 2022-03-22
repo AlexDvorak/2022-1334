@@ -20,6 +20,8 @@ import frc.robot.commands.*;
  * project.
  */
 public class Robot extends TimedRobot {
+
+  // Autonomous chooser
   private final SendableChooser<Command> autonChooser = new SendableChooser<>();
   private Command autonomousCommand;
 
@@ -43,6 +45,8 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void robotInit() {
+    OI.mapControls();
+
     // Add autonomous options to autonomous chooser
     autonChooser.setDefaultOption("Default Auto", new AutoSequence());
 
