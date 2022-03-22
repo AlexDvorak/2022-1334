@@ -30,7 +30,7 @@ public class AutoLaunchCommand extends CommandBase {
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-    Robot.FeederSubsystem.runPercent(0.0);
+    Robot.FeederSubsystem.stop();
     Robot.FlywheelSubsystem.stop();
   }
 

@@ -25,11 +25,11 @@ public class IndexerSubsystem extends SubsystemBase {
     LowerIndexer.configPeakOutputReverse(-0.5);
   }
 
-  public void setIndexer1Voltage (double percent) {
+  public void setIndexer1Voltage(double percent) {
     HigherIndexer.set(ControlMode.PercentOutput, percent);
   }
 
-  public void setIndexer2Voltage (double percent) {
+  public void setIndexer2Voltage(double percent) {
     LowerIndexer.set(ControlMode.PercentOutput, percent);
   }
 

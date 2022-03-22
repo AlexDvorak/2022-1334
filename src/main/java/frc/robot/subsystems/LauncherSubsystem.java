@@ -32,18 +32,16 @@ public class LauncherSubsystem extends SubsystemBase{
   }
 
   // This void method sets a velocity PID setpoint on the Talons
-  public void runVelocity (double setpoint) {
+  public void runVelocity(double setpoint) {
     // Set the first Talon's PID target to the setpoing (second Talon will follow)
     LauncherLeft.set(ControlMode.Velocity, setpoint);
     LauncherRight.set(ControlMode.Velocity, setpoint);
-    System.out.println("LAUNCHER: " + LauncherLeft.getSelectedSensorVelocity());
   }
 
   // This void method manually sets the percent power input to the Launcher Falcons
-  public void runPercent (double percent) {
+  public void runPercent(double percent) {
     LauncherLeft.set(ControlMode.PercentOutput, percent);
     LauncherRight.set(ControlMode.PercentOutput, percent);
-    System.out.println("LAUNCHER: " + LauncherLeft.getSelectedSensorVelocity());
   }
 
   public void stop() {

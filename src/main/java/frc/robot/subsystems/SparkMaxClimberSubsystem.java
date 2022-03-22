@@ -15,7 +15,6 @@ import frc.robot.RobotMap;
 public class SparkMaxClimberSubsystem extends SubsystemBase {
 
   CANSparkMax climbMotor;
-  // DigitalInput lowerSwitch;
   RelativeEncoder encoder;
 
   public SparkMaxClimberSubsystem() {
@@ -39,27 +38,13 @@ public class SparkMaxClimberSubsystem extends SubsystemBase {
   }
 
   public boolean stopReleasingCheck() {
-    if (encoder.getPosition() >= 2) {
-      return true;
-    } else {
-      return false;
-    }
+    return encoder.getPosition() >= 2;
   }
-
-    // while (isClimbing) {
-    //   if (encoder.getPosition() >= 2) {
-    //     // Stop pulling up the robot and lock the motor once we reached the limit
-    //     climbMotor.set(0.0);
-    //     climbMotor.setIdleMode(IdleMode.kBrake);
-
-    //     isClimbing = false;
-    //   }
-    // }
 
   public void pullRobot() {
     encoder.setPosition(0);
     // Motor spins to pull up the robot
-    climbMotor.set(-0.2);//do we need coast?
+    climbMotor.set(-0.2);
   }
 
   public void stopPullingRobot() {
@@ -68,11 +53,7 @@ public class SparkMaxClimberSubsystem extends SubsystemBase {
   }
 
   public boolean stopPullingCheck() {
-    if (encoder.getPosition() >= 2) {
-      return true;
-    } else {
-      return false;
-    }
+    return encoder.getPosition() >= 2;
   }
 
 
