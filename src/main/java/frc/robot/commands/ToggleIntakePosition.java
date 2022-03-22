@@ -12,8 +12,8 @@ import frc.robot.Robot;
 // NOTE:  Consider using this command inline, rather than writing a subclass.  For more
 // information, see:
 // https://docs.wpilib.org/en/stable/docs/software/commandbased/convenience-features.html
-public class ToggleSolenoids extends InstantCommand {
-  public ToggleSolenoids() {
+public class ToggleIntakePosition extends InstantCommand {
+  public ToggleIntakePosition() {
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(Robot.IntakeSubsystem);
   }

@@ -12,22 +12,21 @@ public class AutoDriveCommand extends CommandBase {
   long endTime;
   long startTime;
 
-  public AutoDriveCommand(long time) { // how long to drive for
+  double speed;
+
+  public AutoDriveCommand(long millisecondsToDrive, double percentSpeed) {
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(Robot.DriveSubsystem);
-    endTime = time;
+    speed = percentSpeed;
+    endTime = millisecondsToDrive;
   }
 
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
     startTime = System.currentTimeMillis();
-    Robot.DriveSubsystem.ArcadeDrive(-0.25, 0.0);
+    Robot.DriveSubsystem.ArcadeDrive(speed, 0.0);
   }
-
-  // Called every time the scheduler runs while the command is scheduled.
-  @Override
-  public void execute() {}
 
   // Called once the command ends or is interrupted.
   @Override

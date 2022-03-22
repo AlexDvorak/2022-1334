@@ -19,9 +19,9 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.Robot;
 
-public class IndexerCommand extends CommandBase {
+public class RunIndexer extends CommandBase {
 
-  public IndexerCommand() {
+  public RunIndexer() {
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(Robot.IndexerSubsystem);
   }
