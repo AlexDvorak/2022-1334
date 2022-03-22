@@ -35,10 +35,6 @@ public class Robot extends TimedRobot {
 
   public static OI OI = new OI();
 
-  // UsbCamera camera1;
-  // UsbCamera camera2;
-  // NetworkTableEntry cameraSelection;
-
   /**
    * This function is run when the robot is first started up and should be used for any
    * initialization code.
@@ -52,10 +48,6 @@ public class Robot extends TimedRobot {
 
     // Add autonomous chooser to SmartDashboard
     SmartDashboard.putData("Auto choices", autonChooser);
-
-    // camera1 = CameraServer.startAutomaticCapture(0);
-    // camera2 = CameraServer.startAutomaticCapture(1);
-    // cameraSelection = NetworkTableInstance.getDefault().getTable("").getEntry("CameraSelection");
   }
 
   /**
