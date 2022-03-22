@@ -8,6 +8,7 @@ import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.Robot;
 
 public class RunIntake extends CommandBase {
+
   public RunIntake() {
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(Robot.IntakeSubsystem);
@@ -16,13 +17,13 @@ public class RunIntake extends CommandBase {
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    Robot.IntakeSubsystem.setPercentOutput(0.45);
+    Robot.IntakeSubsystem.runMotorPercent(0.45);
   }
 
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-    Robot.IntakeSubsystem.setPercentOutput(0);
+    Robot.IntakeSubsystem.stopMotor();
   }
 
   // Returns true when the command should end.
@@ -30,4 +31,5 @@ public class RunIntake extends CommandBase {
   public boolean isFinished() {
     return false;
   }
+
 }

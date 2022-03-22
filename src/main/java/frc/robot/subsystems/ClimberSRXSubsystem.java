@@ -8,64 +8,48 @@ import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.RobotMap;
-// import com.revrobotics.CANSparkMax;
-// import com.revrobotics.CANSparkMaxLowLevel.MotorType;
-// import com.revrobotics.RelativeEncoder;
-// import com.revrobotics.CANSparkMax.IdleMode;
 
 public class ClimberSRXSubsystem extends SubsystemBase{
-    
-//     CANSparkMax ClimbMotor = new CANSparkMax(RobotMap.ClimbMotor, MotorType.kBrushless);
-// //    CANSparkMax RightClimbMotor = new CANSparkMax(RobotMap.RightClimbMotor, MotorType.kBrushless);
-//     // RelativeEncoder C1encoder = LeftClimbMotor.getEncoder();
-//     // RelativeEncoder C2encoder = RightClimbMotor.getEncoder();
-//     RelativeEncoder Climb_encoder;
-    //RelativeEncoder Right_encoder;
-        /**
-     * The RestoreFactoryDefaults method can be used to reset the configuration parameters
-     * in the SPARK MAX to their factory default state. If no argument is passed, these
-     * parameters will not persist between power cycles
-     */
-    // LeftClimbMotor.restoreFactoryDefaults();
 
-    /**
-    * In order to read encoder values an encoder object is created using the 
-    * getEncoder() method from an existing CANSparkMax object
-    */
     TalonSRX climbMotor;
+    
+    // Limit switches
     DigitalInput lowerSwitch;
     DigitalInput upperSwitch;
-    boolean isClimbing;
-    boolean isReleasing;
-    int upRevolution;
-    int downRevolution;
+
+    boolean isClimbing = false;
+    boolean isReleasing = false;
+    int upRevolution = 0;
+    int downRevolution = 0;
 
     public ClimberSRXSubsystem() {
-        //CANSparkMax ClimbMotor = new CANSparkMax(RobotMap.LeftClimbMotor, MotorType.kBrushless);
-        //RelativeEncoder Climb_encoder;
-        //ClimbMotor.setIdleMode(IdleMode.kCoast);
-        //Climb_encoder = ClimbMotor.getEncoder();
         climbMotor = new TalonSRX(RobotMap.climbMotor);
         climbMotor.configSelectedFeedbackSensor(FeedbackDevice.IntegratedSensor);
-    
-        climbMotor.configPeakOutputForward(1.0);
-        climbMotor.configPeakOutputReverse(-1.0);
 
         lowerSwitch = new DigitalInput(0);
-        //upperSwitch = new DigitalInput(1);
+        upperSwitch = new DigitalInput(1);
 
         climbMotor.setNeutralMode(NeutralMode.Brake);
+    }
 
-        isClimbing = false;
-        isReleasing = false;
+    public void pullUpRobot() {
+        isClimbing = true;
+        climbMotor.set(ControlMode.PercentOutput, -1.0);
+        
+        while (isClimbing) {
+            if (lowerSwitch.get()) {
+                downRevolution += 1;
+            }
 
-        upRevolution = 0;
-        downRevolution = 0;
-    }    
-    
-//public void whenPressed(ClimberRelease)    
+            if (downRevolution >= 5) {
+                climbMotor.set(ControlMode.PercentOutput, 0.0);
+                climbMotor.setNeutralMode(NeutralMode.Brake);
+                isClimbing = false;
+            }
+        }
+    }
+
     public void climberRelease() {
-
         isReleasing = true;
         climbMotor.setNeutralMode(NeutralMode.Coast);
         climbMotor.set(ControlMode.PercentOutput, 1.0);
@@ -114,20 +98,4 @@ public class ClimberSRXSubsystem extends SubsystemBase{
         
     }
 
-    public void pullUpRobot() {
-        isClimbing = true;
-        climbMotor.set(ControlMode.PercentOutput, -1.0);
-        
-        while (isClimbing) {
-            if (lowerSwitch.get()) {
-                downRevolution += 1;
-            }
-
-            if (downRevolution >= 5) {
-                climbMotor.set(ControlMode.PercentOutput, 0.0);
-                climbMotor.setNeutralMode(NeutralMode.Brake);
-                isClimbing = false;
-            }
-        }
-    }
 }

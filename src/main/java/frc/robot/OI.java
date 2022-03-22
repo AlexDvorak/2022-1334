@@ -2,12 +2,6 @@
 // Open Source Software; you can modify and/or share it under the terms of
 // the WPILib BSD license file in the root directory of this project.
 
-/*-------------------------------------------------------------------------
-Author: Clarrie Wang                                     Date: Jan 22 2022
-OI: operator interface - maps commands to controls on Xbox Controller.
-CURRENTCODEONBOT
----------------------------------------------------------------------------*/
-
 package frc.robot;
 
 import edu.wpi.first.wpilibj.XboxController;

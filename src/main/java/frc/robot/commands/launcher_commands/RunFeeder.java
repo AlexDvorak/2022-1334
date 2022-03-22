@@ -8,7 +8,7 @@ import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.Robot;
 
 public class RunFeeder extends CommandBase {
-  /** Creates a new TalonSRXPercentCommand. */
+
   public RunFeeder() {
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(Robot.FeederSubsystem);
@@ -31,4 +31,5 @@ public class RunFeeder extends CommandBase {
   public boolean isFinished() {
     return false;
   }
+
 }

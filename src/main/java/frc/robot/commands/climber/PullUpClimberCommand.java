@@ -8,7 +8,7 @@ import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.Robot;
 
 public class PullUpClimberCommand extends CommandBase {
-  /** Creates a new PullUpClimberCommand. */
+
   public PullUpClimberCommand() {
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(Robot.ClimberSubsystem);
@@ -31,4 +31,5 @@ public class PullUpClimberCommand extends CommandBase {
   public boolean isFinished() {
     return Robot.ClimberSubsystem.stopPullingCheck();
   }
+
 }

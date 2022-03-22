@@ -8,7 +8,7 @@ import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.Robot;
 
 public class ReleaseClimberCommand extends CommandBase {
-  /** Creates a new ClimberCommand. */
+
   public ReleaseClimberCommand() {
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(Robot.ClimberSubsystem);
@@ -31,4 +31,5 @@ public class ReleaseClimberCommand extends CommandBase {
   public boolean isFinished() {
     return Robot.ClimberSubsystem.stopReleasingCheck();
   }
+
 }

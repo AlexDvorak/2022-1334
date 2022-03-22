@@ -8,7 +8,7 @@ import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.Robot;
 
 public class AutoDriveCommand extends CommandBase {
-  /** Creates a new AutoDriveCommand. */
+
   long endTime;
   long startTime;
 
@@ -39,4 +39,5 @@ public class AutoDriveCommand extends CommandBase {
   public boolean isFinished() {
     return System.currentTimeMillis() >= (startTime + endTime);
   }
+
 }

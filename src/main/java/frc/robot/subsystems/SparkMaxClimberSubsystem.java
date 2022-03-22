@@ -13,11 +13,11 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.RobotMap;
 
 public class SparkMaxClimberSubsystem extends SubsystemBase {
+
   CANSparkMax climbMotor;
   // DigitalInput lowerSwitch;
   RelativeEncoder encoder;
 
-  /** Creates a new SparkMaxCLimberSubsystem. */
   public SparkMaxClimberSubsystem() {
     climbMotor = new CANSparkMax(RobotMap.climbMotor, MotorType.kBrushless);
     climbMotor.setIdleMode(IdleMode.kBrake);

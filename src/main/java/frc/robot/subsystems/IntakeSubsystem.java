@@ -1,6 +1,7 @@
 // Copyright (c) FIRST and other WPILib contributors.
 // Open Source Software; you can modify and/or share it under the terms of
 // the WPILib BSD license file in the root directory of this project.
+
 package frc.robot.subsystems;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
@@ -22,47 +23,31 @@ import frc.robot.RobotMap;
 
 public class IntakeSubsystem extends SubsystemBase {
 
-    // A new motor controller object to control the 775 motor
     TalonSRX intakeMotor;
 
     DoubleSolenoid IntakeSol;
 
     public IntakeSubsystem() {
+        intakeMotor = new TalonSRX(RobotMap.intakeMotor);
         IntakeSol = new DoubleSolenoid(PneumaticsModuleType.CTREPCM, 2, 3);
+
         // Start with Intake up
         IntakeSol.set(Value.kReverse);
-        intakeMotor = new TalonSRX(RobotMap.intakeMotor);
     }
 
     // This method makes the motor spin based on a percentage based voltage input
-    public void setPercentOutput (double output) {
+    public void runMotorPercent(double output) {
         intakeMotor.set(ControlMode.PercentOutput, output);
     }
 
-    public void driverIntake() {
-        // if (axis > 0) {
-        //     setPercentOutput(0.25);
-        // } else if (axis < 0) {
-        //     setPercentOutput(-0.25);
-        // }
-        setPercentOutput(0.5);
+    public void stopMotor() {
+        runMotorPercent(0);
     }
 
     // toggles the solenoid to get intake up and down
-    public void toggleSolenoid() {
+    public void togglePosition() {
         IntakeSol.toggle();
     }
-
-    public void closeSolenoid() {
-        IntakeSol.close();
-    }
-
-    public void solOff() {
-        IntakeSol.set(Value.kOff);
-    }
-
-    
-    
 
     // // This is a void method for deploying the Intake via actuating the pistons. The parameter deploy indicates whether to deploy or retract the intake
     // public void deployIntake (boolean deploy) {
@@ -75,7 +60,7 @@ public class IntakeSubsystem extends SubsystemBase {
     //     IntakeSol.set(DoubleSolenoid.Value.kReverse);
     //     }
     // }
-    
+
     // // This void method toggles the intake deployment
     // public void toggleSolenoid () {
     //     IntakeSol.toggle();
@@ -105,10 +90,10 @@ public class IntakeSubsystem extends SubsystemBase {
     // final I2C.Port i2cPort = I2C.Port.kOnboard;
     // final ColorSensorV3 m_colorSensor = new ColorSensorV3(i2cPort);
     // String colorString;
-  
+
     // // Color match
     // ColorMatch m_colorMatcher = new ColorMatch();
-  
+
     // // Set up RGB values of the target colors
     // private final Color kBlueTarget = new Color(0.143, 0.427, 0.429);
     // private final Color kRedTarget = new Color(0.561, 0.232, 0.114);
@@ -122,9 +107,9 @@ public class IntakeSubsystem extends SubsystemBase {
     //     IntakeSol = new DoubleSolenoid(PneumaticsModuleType.CTREPCM, 2, 3);
     // }
 
-    
+
     // // Take in or push out the cargo depending on its color
-    // public void colorIntake() {    
+    // public void colorIntake() {
     //     String colorString = colorMatch();
     //     if (colorString == RobotMap.color) {
     //     setPercentOutput(0.5);
@@ -151,7 +136,7 @@ public class IntakeSubsystem extends SubsystemBase {
     //     if (proximity > 0) {
     //         validDistance = true;
     //     }
-        
+
     //     if (validDistance) {
 
     //         // Run the color match on our detected color
@@ -164,14 +149,12 @@ public class IntakeSubsystem extends SubsystemBase {
     //         } else {
     //             colorString = "Unknown";
     //         }
-            
+
     //     }
 
     //     return colorString;
     // }
 
     // For driver to manually control the bot to take in or push out a ball
-    
 
-    
 }

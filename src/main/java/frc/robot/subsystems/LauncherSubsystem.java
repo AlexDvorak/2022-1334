@@ -2,14 +2,6 @@
 // Open Source Software; you can modify and/or share it under the terms of
 // the WPILib BSD license file in the root directory of this project.
 
-/*-------------------------------------------------------------------------
-
-Author: Zoey Xie                                  Date: Jan 22 2022
-
-LauncherFXSubsystem class for motor controllers of TalonFX motors. (Big wheel on launcher)
-
----------------------------------------------------------------------------*/
-
 package frc.robot.subsystems;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
@@ -19,9 +11,8 @@ import com.ctre.phoenix.motorcontrol.can.TalonFX;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.RobotMap;
 
-// Talon FX is the small motor
 public class LauncherSubsystem extends SubsystemBase{
-      // The Launcher Talons; 1 is left and 2 is right.
+
   TalonFX LauncherLeft;
   TalonFX LauncherRight;
 

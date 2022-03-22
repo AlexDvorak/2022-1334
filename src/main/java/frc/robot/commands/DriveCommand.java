@@ -9,7 +9,7 @@ import frc.robot.OI;
 import frc.robot.Robot;
 
 public class DriveCommand extends CommandBase {
-  /** Creates a new DriveCommand. */
+
   public DriveCommand() {
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(Robot.DriveSubsystem);
@@ -36,4 +36,5 @@ public class DriveCommand extends CommandBase {
   public boolean isFinished() {
     return false;
   }
+
 }
