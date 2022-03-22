@@ -5,6 +5,7 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
+import frc.robot.OI;
 import frc.robot.Robot;
 
 public class DriveCommand extends CommandBase {
@@ -21,7 +22,7 @@ public class DriveCommand extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    Robot.DriveSubsystem.ArcadeDrive(Robot.OI.getDriverSpeed(), Robot.OI.getDriverTurn());
+    Robot.DriveSubsystem.ArcadeDrive(OI.getDriverSpeed(), OI.getDriverTurn());
   }
 
   // Called once the command ends or is interrupted.

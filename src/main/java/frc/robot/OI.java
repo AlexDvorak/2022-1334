@@ -24,36 +24,36 @@ import frc.robot.commands.ClimbTestingReverse;
 
 public class OI {
     // Driver, initialized with port 0
-    public final XboxController Driver = new XboxController(0);
+    public static final XboxController Driver = new XboxController(0);
 
-    // Driver, initialized with port 1
-    public final XboxController Operator = new XboxController(1);
+    // Operator, initialized with port 1
+    public static final XboxController Operator = new XboxController(1);
   
     // Driver Buttons
-    public final JoystickButton DriverAButton = new JoystickButton(Driver, XboxController.Button.kA.value);
-    public final JoystickButton DriverBButton = new JoystickButton(Driver, XboxController.Button.kB.value);
-    public final JoystickButton DriverXButton = new JoystickButton(Driver, XboxController.Button.kX.value);
-    public final JoystickButton DriverYButton = new JoystickButton(Driver, XboxController.Button.kY.value);
+    public static final JoystickButton DriverAButton = new JoystickButton(Driver, XboxController.Button.kA.value);
+    public static final JoystickButton DriverBButton = new JoystickButton(Driver, XboxController.Button.kB.value);
+    public static final JoystickButton DriverXButton = new JoystickButton(Driver, XboxController.Button.kX.value);
+    public static final JoystickButton DriverYButton = new JoystickButton(Driver, XboxController.Button.kY.value);
     
     // Driver Triggers
-    public final JoystickButton DriverLeftBumper = new JoystickButton(Driver, XboxController.Button.kLeftBumper.value);
-    public final JoystickButton DriverRightBumper = new JoystickButton(Driver, XboxController.Button.kRightBumper.value);
+    public static final JoystickButton DriverLeftBumper = new JoystickButton(Driver, XboxController.Button.kLeftBumper.value);
+    public static final JoystickButton DriverRightBumper = new JoystickButton(Driver, XboxController.Button.kRightBumper.value);
 
     // Operator Buttons
-    public final JoystickButton OperatorAButton = new JoystickButton(Operator, XboxController.Button.kA.value);
-    public final JoystickButton OperatorBButton = new JoystickButton(Operator, XboxController.Button.kB.value);
-    public final JoystickButton OperatorXButton = new JoystickButton(Operator, XboxController.Button.kX.value);
-    public final JoystickButton OperatorYButton = new JoystickButton(Operator, XboxController.Button.kY.value);
+    public static final JoystickButton OperatorAButton = new JoystickButton(Operator, XboxController.Button.kA.value);
+    public static final JoystickButton OperatorBButton = new JoystickButton(Operator, XboxController.Button.kB.value);
+    public static final JoystickButton OperatorXButton = new JoystickButton(Operator, XboxController.Button.kX.value);
+    public static final JoystickButton OperatorYButton = new JoystickButton(Operator, XboxController.Button.kY.value);
     // Allow using the left trigger as a button
-    public final Button OperatorLeftTriggerButton = new Button(() -> {return Operator.getRightTriggerAxis() > 0;});
+    public static final Button OperatorLeftTriggerButton = new Button(() -> {return Operator.getRightTriggerAxis() > 0;});
     
     // Operator Triggers
-    public final JoystickButton OperatorLeftBumper = new JoystickButton(Operator, XboxController.Button.kLeftBumper.value);
-    public final JoystickButton OperatorRightBumper = new JoystickButton(Operator, XboxController.Button.kRightBumper.value);
+    public static final JoystickButton OperatorLeftBumper = new JoystickButton(Operator, XboxController.Button.kLeftBumper.value);
+    public static final JoystickButton OperatorRightBumper = new JoystickButton(Operator, XboxController.Button.kRightBumper.value);
 
     /** Maps and initializes controls to the controllers. */
-    public void mapControls() {
-        DriverAButton.whenPressed(new ToggleSolenoids());
+    public static void mapControls() {
+        DriverAButton.whenPressed(new ToggleIntakePosition());
         DriverBButton.whenPressed(new PullUpClimberCommand());
         //DriverBButton.whileHeld(new ClimbTestingForward());
         //DriverXButton.whileHeld(new ClimbTestingReverse());
@@ -61,17 +61,20 @@ public class OI {
         DriverYButton.whenPressed(new ToggleMirrorSolenoid());
 
         // Inititalize the Operator Controls
-        OperatorAButton.whenHeld(new FeederPercentCommand());
-        OperatorBButton.whenHeld(new IntakeCommand());
-        OperatorXButton.whenHeld(new FlywheelPercentCommand());
-        OperatorYButton.whenHeld(new IndexerCommand());
+        OperatorAButton.whenHeld(new RunFeeder());
+        OperatorBButton.whenHeld(new RunIntake());
+        OperatorXButton.whenHeld(new RunFlywheelPercent(1.0));
+        OperatorYButton.whenHeld(new RunIndexer());
         
-        OperatorLeftTriggerButton.whenHeld(new ToggleSolenoids());
+        OperatorLeftTriggerButton.whenPressed(new ToggleIntakePosition());
     }
 
-    // method that takes speed to go forwards or backwards from bumpers of controller depending on how hard driver presses
-    // This double (decimal number) method returns the difference between the left and right Driver triggers (How much to move forwards/backwards)
-    public double getDriverSpeed () {
+    /**
+     * Method that takes speed to go forwards or backwards from triggers
+     * of controller depending on how hard driver presses.
+     * @return How much to move forwards/backwards
+     */
+    public static double getDriverSpeed () {
         double accelerate = Driver.getRightTriggerAxis();
         double brake = Driver.getLeftTriggerAxis();
 
@@ -82,8 +85,10 @@ public class OI {
         }
     }
     
-    // This double method returns the x-axis of the Driver top/turn joystick. The value returned would determine how much to turn to the left or right
-    public double getDriverTurn () {
+    /**
+     * @return How much to turn to the left or right
+     */
+    public static double getDriverTurn () {
         double driverTurn = Driver.getLeftX();
 
         if (Math.abs(driverTurn) > 0.15) {
@@ -93,7 +98,7 @@ public class OI {
         }
     }
 
-    public double getDriverIntake() {
+    public static double getDriverIntake() {
         double driverIntake = Driver.getRightX();
 
         if (Math.abs(driverIntake) > 0.15) {
@@ -103,7 +108,7 @@ public class OI {
         }
     }
 
-    public double getOperatorLauncher() {
+    public static double getOperatorLauncher() {
         double operatorLauncher = Operator.getRightTriggerAxis();
 
         if (Math.abs(operatorLauncher) > 0.15) {
