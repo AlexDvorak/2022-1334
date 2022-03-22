@@ -16,13 +16,13 @@ public class ReleaseClimberCommand extends CommandBase {
 
   // Called when the command is initially scheduled.
   @Override
-  public void initialize() {}
+  public void initialize() {
+    Robot.ClimberSubsystem.releaseClimber();
+  }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
-  public void execute() {
-    Robot.ClimberSubsystem.releaseClimber();
-  }
+  public void execute() {}
 
   // Called once the command ends or is interrupted.
   @Override
@@ -33,9 +33,6 @@ public class ReleaseClimberCommand extends CommandBase {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    if (Robot.ClimberSubsystem.stopReleasingCheck()) {
-      return true;
-    }
-    return false;
+    return Robot.ClimberSubsystem.stopReleasingCheck();
   }
 }

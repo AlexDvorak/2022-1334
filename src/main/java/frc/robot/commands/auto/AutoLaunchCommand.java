@@ -23,14 +23,13 @@ public class AutoLaunchCommand extends CommandBase {
   @Override
   public void initialize() {
     startTime = System.currentTimeMillis();
+    Robot.FeederSubsystem.setLauncherPercent(0.3);
+    Robot.FlywheelSubsystem.setLauncherPercent(0.5);
   }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
-  public void execute() {
-    Robot.FeederSubsystem.setLauncherPercent(0.3);
-    Robot.FlywheelSubsystem.setLauncherPercent(0.5);
-  }
+  public void execute() {}
 
   // Called once the command ends or is interrupted.
   @Override
