@@ -28,80 +28,54 @@ import frc.robot.RobotMap;
 // import edu.wpi.first.wpilibj.motorcontrol.MotorControllerGroup;
 
 public class DriveSubsystem extends SubsystemBase {
-  // using 3 Spark Max motor controllers, 1s for front motors, 2 for back
-  CANSparkMax L1motor;
-  RelativeEncoder L1encoder;
-  SparkMaxPIDController L1controller;
-
-  CANSparkMax L2motor;
-  RelativeEncoder L2encoder;
-  SparkMaxPIDController L2controller;
-
-  CANSparkMax R1motor;
-  RelativeEncoder R1encoder;
-  SparkMaxPIDController R1controller;
-
-  CANSparkMax R2motor;
-  RelativeEncoder R2encoder;
-  SparkMaxPIDController R2controller;
 
   DoubleSolenoid mirrorSol;
 
+  // using 4 Spark Max motor controllers, 2 for front motors, 2 for back
+  CANSparkMax L1motor;
+  CANSparkMax L2motor;
+  CANSparkMax R1motor;
+  CANSparkMax R2motor;
+
   // Grouping together the motor controllers on the left side
-  MotorControllerGroup LeftControllerGroup;
-  MotorControllerGroup RightControllerGroup;
+  MotorControllerGroup LeftMotors;
+  MotorControllerGroup RightMotors;
 
   // Differential drivetrain object (aka West Coast/Tank drive)
   DifferentialDrive DifferentialDriveTrain;
 
   public DriveSubsystem() {
     L1motor = new CANSparkMax(RobotMap.L1motor, MotorType.kBrushless);
-    L1encoder = L1motor.getEncoder();
-    L1controller = L1motor.getPIDController();
-  
-    L2motor = new CANSparkMax(RobotMap.L2motor, MotorType.kBrushless);
-    L2encoder = L2motor.getEncoder();
-    L2controller = L2motor.getPIDController();
-  
+    L2motor = new CANSparkMax(RobotMap.L2motor, MotorType.kBrushless);  
     R1motor = new CANSparkMax(RobotMap.R1motor, MotorType.kBrushless);
-    R1encoder = R1motor.getEncoder();
-    R1controller = R1motor.getPIDController();
-  
     R2motor = new CANSparkMax(RobotMap.R2motor, MotorType.kBrushless);
-    R2encoder = R2motor.getEncoder();
-    R2controller = R2motor.getPIDController();
-    
-    // Grouping together the motor controllers on the left side
-    LeftControllerGroup = new MotorControllerGroup(L1motor, L2motor);
-    RightControllerGroup = new MotorControllerGroup(R1motor, R2motor);
 
-    // Differential drivetrain object (aka West Coast/Tank drive)
-    // only used for drive pid
-    // DifferentialDriveTrain = new DifferentialDrive(LeftControllerGroup, RightControllerGroup);
-    
+    // invert left side motors of the drivetrain
+    L1motor.setInverted(true);
+    L2motor.setInverted(true);
+
     // reset encoders to start at 0
-    L1encoder.setPosition(0);
-    L2encoder.setPosition(0);    
-    R1encoder.setPosition(0);
-    R2encoder.setPosition(0);
+    L1motor.getEncoder().setPosition(0);
+    L2motor.getEncoder().setPosition(0);    
+    R1motor.getEncoder().setPosition(0);
+    R2motor.getEncoder().setPosition(0);
+    
+    // Grouping together the motor controllers on each side
+    LeftMotors = new MotorControllerGroup(L1motor, L2motor);
+    RightMotors = new MotorControllerGroup(R1motor, R2motor);
 
-    //mirrorSol = new DoubleSolenoid(PneumaticsModuleType.CTREPCM, 2, 3);
-    // Initialize the solenoid to start on reverse
-    //mirrorSol.set(Value.kReverse);
+    DifferentialDriveTrain = new DifferentialDrive(LeftMotors, RightMotors);
   }
 
   // feed percent voltage power into both sides of drive train
   // mapping individual motors to voltage 
   public void TankDrive(double Left, double Right) {
-    L1motor.set(-Left);
-    L2motor.set(-Left);
-    R1motor.set(Right);
-    R2motor.set(Right);
+    DifferentialDriveTrain.tankDrive(Left, Right);
   }
 
   // wrapper function that allows for turning in tank drive
   public void ArcadeDrive(double speed, double turn) {
-    TankDrive(speed - turn, speed + turn);
+    DifferentialDriveTrain.arcadeDrive(speed, turn);
   }
 
   public void toggleMirrorSolenoid() {
