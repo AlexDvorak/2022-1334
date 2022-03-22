@@ -13,7 +13,6 @@ LauncherSRXSubsystem class for motor controller of 775 motor.
 package frc.robot.subsystems;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
-import com.ctre.phoenix.motorcontrol.FeedbackDevice;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
@@ -25,18 +24,15 @@ public class FeederSubsystem extends SubsystemBase{
 
     public FeederSubsystem() {
         LauncherSmallWheel = new TalonSRX(RobotMap.LauncherSmallWheel);
-        LauncherSmallWheel.configSelectedFeedbackSensor(FeedbackDevice.IntegratedSensor, 0, 0);
     } 
- 
-    public void setLauncherVelocity (double setpoint) {
-        // Set the first Talon's PID target to the setpoing (second Talon will follow)
-        LauncherSmallWheel.set(ControlMode.Velocity, setpoint);
+
+    public void runPercent (double percent) {
+        LauncherSmallWheel.set(ControlMode.PercentOutput, percent);
         System.out.println("LAUNCHER: " + LauncherSmallWheel.getSelectedSensorVelocity());
     }
 
-    public void setLauncherPercent (double percent) {
-        LauncherSmallWheel.set(ControlMode.PercentOutput, percent);
-        System.out.println("LAUNCHER: " + LauncherSmallWheel.getSelectedSensorVelocity());
+    public void stop() {
+        LauncherSmallWheel.set(ControlMode.PercentOutput, 0);
     }
            
 }

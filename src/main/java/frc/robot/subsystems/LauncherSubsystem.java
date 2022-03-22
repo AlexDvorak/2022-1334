@@ -30,8 +30,8 @@ public class LauncherSubsystem extends SubsystemBase{
     LauncherRight = new TalonFX(RobotMap.LauncherRight);
     
     // Configure the default Integrated Sensors for the Talons
-    LauncherLeft.configSelectedFeedbackSensor(FeedbackDevice.IntegratedSensor, 0, 0);
-    LauncherRight.configSelectedFeedbackSensor(FeedbackDevice.IntegratedSensor, 0, 0);
+    LauncherLeft.configSelectedFeedbackSensor(FeedbackDevice.IntegratedSensor);
+    LauncherRight.configSelectedFeedbackSensor(FeedbackDevice.IntegratedSensor);
 
     // Set the second Talon to follow the first Talon
     LauncherRight.set(ControlMode.Follower, RobotMap.LauncherLeft);
@@ -41,7 +41,7 @@ public class LauncherSubsystem extends SubsystemBase{
   }
 
   // This void method sets a velocity PID setpoint on the Talons
-  public void setLauncherVelocity (double setpoint) {
+  public void runVelocity (double setpoint) {
     // Set the first Talon's PID target to the setpoing (second Talon will follow)
     LauncherLeft.set(ControlMode.Velocity, setpoint);
     LauncherRight.set(ControlMode.Velocity, setpoint);
@@ -49,11 +49,15 @@ public class LauncherSubsystem extends SubsystemBase{
   }
 
   // This void method manually sets the percent power input to the Launcher Falcons
-  public void setLauncherPercent (double percent) {
+  public void runPercent (double percent) {
     LauncherLeft.set(ControlMode.PercentOutput, percent);
     LauncherRight.set(ControlMode.PercentOutput, percent);
     System.out.println("LAUNCHER: " + LauncherLeft.getSelectedSensorVelocity());
   }
 
+  public void stop() {
+    LauncherLeft.set(ControlMode.PercentOutput, 0);
+    LauncherRight.set(ControlMode.PercentOutput, 0);
+  }
 
 }

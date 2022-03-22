@@ -23,15 +23,15 @@ public class AutoLaunchCommand extends CommandBase {
   @Override
   public void initialize() {
     startTime = System.currentTimeMillis();
-    Robot.FeederSubsystem.setLauncherPercent(0.3);
-    Robot.FlywheelSubsystem.setLauncherPercent(0.5);
+    Robot.FeederSubsystem.runPercent(0.3);
+    Robot.FlywheelSubsystem.runPercent(0.5);
   }
 
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-    Robot.FeederSubsystem.setLauncherPercent(0.0);
-    Robot.FlywheelSubsystem.setLauncherPercent(0.0);
+    Robot.FeederSubsystem.runPercent(0.0);
+    Robot.FlywheelSubsystem.stop();
   }
 
   // Returns true when the command should end.

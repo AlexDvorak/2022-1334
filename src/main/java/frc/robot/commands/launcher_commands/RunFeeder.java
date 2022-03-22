@@ -17,17 +17,13 @@ public class RunFeeder extends CommandBase {
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    Robot.FeederSubsystem.setLauncherPercent(0.7);
+    Robot.FeederSubsystem.runPercent(0.7);
   }
-
-  // Called every time the scheduler runs while the command is scheduled.
-  @Override
-  public void execute() {}
 
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-    Robot.FeederSubsystem.setLauncherPercent(0.0);
+    Robot.FeederSubsystem.stop();
   }
 
   // Returns true when the command should end.
