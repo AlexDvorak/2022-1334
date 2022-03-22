@@ -4,7 +4,10 @@
 
 package frc.robot;
 
+import edu.wpi.first.wpilibj.DriverStation;
+import edu.wpi.first.wpilibj.I2C;
 import edu.wpi.first.wpilibj.TimedRobot;
+import edu.wpi.first.wpilibj.DriverStation.Alliance;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
@@ -24,6 +27,10 @@ public class Robot extends TimedRobot {
   // Autonomous chooser
   private final SendableChooser<Command> autonChooser = new SendableChooser<>();
   private Command autonomousCommand;
+
+  // Color Sensor
+  public static ColorSensor ColorSensor = new ColorSensor(I2C.Port.kOnboard);
+  public static Alliance ourAlliance;
 
   // Initializing subsystems:
   public static DriveSubsystem DriveSubsystem = new DriveSubsystem();
@@ -67,6 +74,7 @@ public class Robot extends TimedRobot {
 
   @Override
   public void autonomousInit() {
+    ourAlliance = DriverStation.getAlliance();
     autonomousCommand = autonChooser.getSelected();
     if (autonomousCommand != null) {
       autonomousCommand.schedule();
@@ -77,6 +85,7 @@ public class Robot extends TimedRobot {
   /** This function is called once when teleop is enabled. */
   @Override
   public void teleopInit() {
+    ourAlliance = DriverStation.getAlliance();
     // set DriveCommand as the command to run when the DriveSubsystem isn't being used by another command
     DriveSubsystem.setDefaultCommand(new DriveCommand());
   }
