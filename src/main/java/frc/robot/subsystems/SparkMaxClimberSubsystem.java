@@ -55,13 +55,13 @@ public class SparkMaxClimberSubsystem extends SubsystemBase {
     //     isClimbing = false;
     //   }
     // }
-  
+
   public void pullRobot() {
     encoder.setPosition(0);
     // Motor spins to pull up the robot
     climbMotor.set(-0.2);//do we need coast?
   }
-  
+
   public void stopPullingRobot() {
     climbMotor.set(0.0);
     climbMotor.setIdleMode(IdleMode.kBrake);

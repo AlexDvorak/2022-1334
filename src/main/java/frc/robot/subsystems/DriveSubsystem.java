@@ -32,7 +32,7 @@ public class DriveSubsystem extends SubsystemBase {
 
   public DriveSubsystem() {
     L1motor = new CANSparkMax(RobotMap.L1motor, MotorType.kBrushless);
-    L2motor = new CANSparkMax(RobotMap.L2motor, MotorType.kBrushless);  
+    L2motor = new CANSparkMax(RobotMap.L2motor, MotorType.kBrushless);
     R1motor = new CANSparkMax(RobotMap.R1motor, MotorType.kBrushless);
     R2motor = new CANSparkMax(RobotMap.R2motor, MotorType.kBrushless);
 
@@ -42,10 +42,10 @@ public class DriveSubsystem extends SubsystemBase {
 
     // reset encoders to start at 0
     L1motor.getEncoder().setPosition(0);
-    L2motor.getEncoder().setPosition(0);    
+    L2motor.getEncoder().setPosition(0);
     R1motor.getEncoder().setPosition(0);
     R2motor.getEncoder().setPosition(0);
-    
+
     // Grouping together the motor controllers on each side
     LeftMotors = new MotorControllerGroup(L1motor, L2motor);
     RightMotors = new MotorControllerGroup(R1motor, R2motor);
@@ -54,7 +54,7 @@ public class DriveSubsystem extends SubsystemBase {
   }
 
   // feed percent voltage power into both sides of drive train
-  // mapping individual motors to voltage 
+  // mapping individual motors to voltage
   public void TankDrive(double Left, double Right) {
     DifferentialDriveTrain.tankDrive(Left, Right);
   }
@@ -65,6 +65,6 @@ public class DriveSubsystem extends SubsystemBase {
   }
 
   public void toggleMirrorSolenoid() {
-    mirrorSol.toggle();   
+    mirrorSol.toggle();
   }
 }

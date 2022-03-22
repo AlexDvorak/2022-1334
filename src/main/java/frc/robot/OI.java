@@ -22,13 +22,13 @@ public class OI {
 
     // Operator, initialized with port 1
     public static final XboxController Operator = new XboxController(1);
-  
+
     // Driver Buttons
     public static final JoystickButton DriverAButton = new JoystickButton(Driver, XboxController.Button.kA.value);
     public static final JoystickButton DriverBButton = new JoystickButton(Driver, XboxController.Button.kB.value);
     public static final JoystickButton DriverXButton = new JoystickButton(Driver, XboxController.Button.kX.value);
     public static final JoystickButton DriverYButton = new JoystickButton(Driver, XboxController.Button.kY.value);
-    
+
     // Driver Triggers
     public static final JoystickButton DriverLeftBumper = new JoystickButton(Driver, XboxController.Button.kLeftBumper.value);
     public static final JoystickButton DriverRightBumper = new JoystickButton(Driver, XboxController.Button.kRightBumper.value);
@@ -40,7 +40,7 @@ public class OI {
     public static final JoystickButton OperatorYButton = new JoystickButton(Operator, XboxController.Button.kY.value);
     // Allow using the left trigger as a button
     public static final Button OperatorLeftTriggerButton = new Button(() -> {return Operator.getRightTriggerAxis() > 0;});
-    
+
     // Operator Triggers
     public static final JoystickButton OperatorLeftBumper = new JoystickButton(Operator, XboxController.Button.kLeftBumper.value);
     public static final JoystickButton OperatorRightBumper = new JoystickButton(Operator, XboxController.Button.kRightBumper.value);
@@ -59,7 +59,7 @@ public class OI {
         OperatorBButton.whenHeld(new RunIntake());
         OperatorXButton.whenHeld(new RunFlywheelPercent(1.0));
         OperatorYButton.whenHeld(new RunIndexer());
-        
+
         OperatorLeftTriggerButton.whenPressed(new ToggleIntakePosition());
     }
 
@@ -78,7 +78,7 @@ public class OI {
             return 0.0;
         }
     }
-    
+
     /**
      * @return How much to turn to the left or right
      */

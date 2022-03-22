@@ -28,7 +28,7 @@ public class IndexerSubsystem extends SubsystemBase {
   public void setIndexer1Voltage (double percent) {
     HigherIndexer.set(ControlMode.PercentOutput, percent);
   }
-  
+
   public void setIndexer2Voltage (double percent) {
     LowerIndexer.set(ControlMode.PercentOutput, percent);
   }

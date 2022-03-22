@@ -54,10 +54,10 @@
 //     if (proximity > 0) {
 //       validDistance = true;
 //     }
-    
+
 //     while (validDistance) {
 //       // Run the color match on our detected color
-      
+
 //       ColorMatchResult match = m_colorMatcher.matchClosestColor(detectedColor);
 
 //       if (match.color == kBlueTarget) {
@@ -67,10 +67,10 @@
 //       } else {
 //         colorString = "Unknown";
 //       }
-      
+
 //     }
 //     return colorString;
 //   }
-  
+
 // }
 

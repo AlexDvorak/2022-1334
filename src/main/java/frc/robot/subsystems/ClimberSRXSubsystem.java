@@ -12,7 +12,7 @@ import frc.robot.RobotMap;
 public class ClimberSRXSubsystem extends SubsystemBase{
 
     TalonSRX climbMotor;
-    
+
     // Limit switches
     DigitalInput lowerSwitch;
     DigitalInput upperSwitch;
@@ -35,7 +35,7 @@ public class ClimberSRXSubsystem extends SubsystemBase{
     public void pullUpRobot() {
         isClimbing = true;
         climbMotor.set(ControlMode.PercentOutput, -1.0);
-        
+
         while (isClimbing) {
             if (lowerSwitch.get()) {
                 downRevolution += 1;
@@ -69,7 +69,7 @@ public class ClimberSRXSubsystem extends SubsystemBase{
         // C1encoder.setPosition(0);
         // C2encoder.setPosition(0);
         //RightClimbMotor.set(ControlMode.Follower, RobotMap.LeftClimbMotor);
-        
+
         //set motors to neutral so spring can expand (coast)
         // RightClimbMotor.setNeutralMode(NeutralMode.Coast);
         //RightClimbMotor.setIdleMode(IdleMode.kCoast);
@@ -80,13 +80,13 @@ public class ClimberSRXSubsystem extends SubsystemBase{
         //boolean Latching = true;
 
         // while (Latching) {
-        
+
         // //check encoder value to make sure it doesn't go too far
         // // double MotorPos = LeftClimbMotor.getSelectedSensorPosition();
         // // double MotorPos = m_encoder.getPosition();
 
         // //stop motors once they reach target distance (or set them to hold position)
-        // //4096 encoder counts in a single revoloution of CANSpark    
+        // //4096 encoder counts in a single revoloution of CANSpark
         // if (Left_encoder.getPosition() >= 2048) {
         //         Latching = false;
         //         // LeftClimbMotor.setNeutralMode(NeutralMode.Brake);
@@ -95,7 +95,7 @@ public class ClimberSRXSubsystem extends SubsystemBase{
         //         ClimbMotor.setIdleMode(IdleMode.kBrake);
         //     }
         // }
-        
+
     }
 
 }

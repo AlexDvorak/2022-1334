@@ -19,14 +19,14 @@ public class LauncherSubsystem extends SubsystemBase{
   public LauncherSubsystem() {
     LauncherLeft = new TalonFX(RobotMap.LauncherLeft);
     LauncherRight = new TalonFX(RobotMap.LauncherRight);
-    
+
     // Configure the default Integrated Sensors for the Talons
     LauncherLeft.configSelectedFeedbackSensor(FeedbackDevice.IntegratedSensor);
     LauncherRight.configSelectedFeedbackSensor(FeedbackDevice.IntegratedSensor);
 
     // Set the second Talon to follow the first Talon
     LauncherRight.set(ControlMode.Follower, RobotMap.LauncherLeft);
-    
+
     // Invert the first Talon (Left and Right can now run the same Velocity PID RPM)
     LauncherLeft.setInverted(true);
   }

@@ -32,4 +32,4 @@ public class RobotMap {
 
   // Climber: 2 Falcons
   public static final int climbMotor = 11;
-}  
+}

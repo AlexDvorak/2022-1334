@@ -16,7 +16,7 @@ public class FeederSubsystem extends SubsystemBase{
 
     public FeederSubsystem() {
         LauncherSmallWheel = new TalonSRX(RobotMap.LauncherSmallWheel);
-    } 
+    }
 
     public void runPercent (double percent) {
         LauncherSmallWheel.set(ControlMode.PercentOutput, percent);
@@ -26,5 +26,5 @@ public class FeederSubsystem extends SubsystemBase{
     public void stop() {
         LauncherSmallWheel.set(ControlMode.PercentOutput, 0);
     }
-           
+
 }
