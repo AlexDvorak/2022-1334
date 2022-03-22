@@ -20,10 +20,10 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.RobotMap;
 
 // Talon SRX is the big guy
-public class LauncherSRXSubsystem extends SubsystemBase{
+public class FeederSubsystem extends SubsystemBase{
     TalonSRX LauncherSmallWheel;
 
-    public LauncherSRXSubsystem() {
+    public FeederSubsystem() {
         LauncherSmallWheel = new TalonSRX(RobotMap.LauncherSmallWheel);
         LauncherSmallWheel.configSelectedFeedbackSensor(FeedbackDevice.IntegratedSensor, 0, 0);
     } 

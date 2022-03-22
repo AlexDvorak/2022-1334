@@ -20,12 +20,12 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.RobotMap;
 
 // Talon FX is the small motor
-public class LauncherFXSubsystem extends SubsystemBase{
+public class LauncherSubsystem extends SubsystemBase{
       // The Launcher Talons; 1 is left and 2 is right.
   TalonFX LauncherLeft;
   TalonFX LauncherRight;
 
-  public LauncherFXSubsystem() {
+  public LauncherSubsystem() {
     LauncherLeft = new TalonFX(RobotMap.LauncherLeft);
     LauncherRight = new TalonFX(RobotMap.LauncherRight);
     
