@@ -29,7 +29,7 @@ public class ReleaseClimberCommand extends CommandBase {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return Robot.ClimberSubsystem.stopReleasingCheck();
+    return Robot.ClimberSubsystem.doneReleasing();
   }
 
 }

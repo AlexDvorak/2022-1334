@@ -9,7 +9,7 @@ import frc.robot.Robot;
 
 public class RunFlywheelPercent extends CommandBase {
 
-  double percent;
+  private final double percent;
 
   public RunFlywheelPercent(double percentOutput) {
     this.percent = percentOutput;

@@ -37,7 +37,7 @@ public class SparkMaxClimberSubsystem extends SubsystemBase {
     climbMotor.setIdleMode(IdleMode.kBrake);
   }
 
-  public boolean stopReleasingCheck() {
+  public boolean doneReleasing() {
     return encoder.getPosition() >= 2;
   }
 
@@ -52,7 +52,7 @@ public class SparkMaxClimberSubsystem extends SubsystemBase {
     climbMotor.setIdleMode(IdleMode.kBrake);
   }
 
-  public boolean stopPullingCheck() {
+  public boolean donePulling() {
     return encoder.getPosition() >= 2;
   }
 

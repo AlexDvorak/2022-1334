@@ -9,10 +9,8 @@ import frc.robot.Robot;
 
 public class AutoDriveCommand extends CommandBase {
 
-  long endTime;
-  long startTime;
-
-  double speed;
+  private long endTime, startTime;
+  private final double speed;
 
   public AutoDriveCommand(long millisecondsToDrive, double percentSpeed) {
     // Use addRequirements() here to declare subsystem dependencies.

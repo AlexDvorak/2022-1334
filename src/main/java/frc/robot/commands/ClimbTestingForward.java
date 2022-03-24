@@ -9,11 +9,10 @@ import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.Robot;
 
 public class ClimbTestingForward extends CommandBase {
-  /** Creates a new ClimbTesting. */
+
   public ClimbTestingForward() {
     // Use addRequirements() here to declare subsystem dependencies.
-    addRequirements(Robot.SparkMaxClimberSubsystem);
-
+    addRequirements(Robot.ClimberSubsystem);
   }
 
   // Called when the command is initially scheduled.
@@ -23,15 +22,13 @@ public class ClimbTestingForward extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    Robot.SparkMaxClimberSubsystem.testingForward();
-
+    Robot.ClimberSubsystem.testingForward();
   }
 
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-    Robot.SparkMaxClimberSubsystem.stopPullingRobot();
-
+    Robot.ClimberSubsystem.stopPullingRobot();
   }
 
   // Returns true when the command should end.
