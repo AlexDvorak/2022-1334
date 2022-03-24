@@ -20,6 +20,11 @@ public class AutoLaunchCommand extends CommandBase {
   }
 
   @Override
+  public void execute() {
+    System.out.println("Flywheel Motor RPM: " + Robot.FlywheelSubsystem.getRPM());
+  }
+
+  @Override
   public void end(boolean interrupted) {
     Robot.FeederSubsystem.stop();
     Robot.FlywheelSubsystem.stop();

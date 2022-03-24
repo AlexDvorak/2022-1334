@@ -44,6 +44,10 @@ public class LauncherSubsystem extends SubsystemBase{
     LauncherRight.set(ControlMode.PercentOutput, percent);
   }
 
+  public double getRPM() {
+    return (LauncherLeft.getSelectedSensorVelocity() * 10.0 * 60.0) / 2048.0;
+  }
+
   public void stop() {
     LauncherLeft.set(ControlMode.PercentOutput, 0);
     LauncherRight.set(ControlMode.PercentOutput, 0);
