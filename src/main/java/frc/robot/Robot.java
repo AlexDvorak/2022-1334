@@ -57,6 +57,8 @@ public class Robot extends TimedRobot {
     if (autonomousCommand != null) {
       autonomousCommand.schedule();
       System.out.println("Auto selected: " + autonomousCommand.getName());
+    } else {
+      System.out.println("Auto selected: No autonomous was selected");
     }
 
     ourAlliance = DriverStation.getAlliance();
