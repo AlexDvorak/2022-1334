@@ -4,63 +4,32 @@
 
 package frc.robot;
 
-import edu.wpi.first.wpilibj.XboxController;
-import edu.wpi.first.wpilibj2.command.button.JoystickButton;
-import edu.wpi.first.wpilibj2.command.button.Button;
-
 import frc.robot.commands.*;
 import frc.robot.commands.climber.*;
 import frc.robot.commands.launcher_commands.*;
 
-
-import frc.robot.commands.ClimbTestingForward;
-import frc.robot.commands.ClimbTestingReverse;
-
 public class OI {
-    // Driver, initialized with port 0
-    public static final XboxController Driver = new XboxController(0);
 
-    // Operator, initialized with port 1
-    public static final XboxController Operator = new XboxController(1);
-
-    // Driver Buttons
-    public static final JoystickButton DriverAButton = new JoystickButton(Driver, XboxController.Button.kA.value);
-    public static final JoystickButton DriverBButton = new JoystickButton(Driver, XboxController.Button.kB.value);
-    public static final JoystickButton DriverXButton = new JoystickButton(Driver, XboxController.Button.kX.value);
-    public static final JoystickButton DriverYButton = new JoystickButton(Driver, XboxController.Button.kY.value);
-
-    // Driver Triggers
-    public static final JoystickButton DriverLeftBumper = new JoystickButton(Driver, XboxController.Button.kLeftBumper.value);
-    public static final JoystickButton DriverRightBumper = new JoystickButton(Driver, XboxController.Button.kRightBumper.value);
-
-    // Operator Buttons
-    public static final JoystickButton OperatorAButton = new JoystickButton(Operator, XboxController.Button.kA.value);
-    public static final JoystickButton OperatorBButton = new JoystickButton(Operator, XboxController.Button.kB.value);
-    public static final JoystickButton OperatorXButton = new JoystickButton(Operator, XboxController.Button.kX.value);
-    public static final JoystickButton OperatorYButton = new JoystickButton(Operator, XboxController.Button.kY.value);
-    // Allow using the left trigger as a button
-    public static final Button OperatorLeftTriggerButton = new Button(() -> {return Operator.getRightTriggerAxis() > 0;});
-
-    // Operator Triggers
-    public static final JoystickButton OperatorLeftBumper = new JoystickButton(Operator, XboxController.Button.kLeftBumper.value);
-    public static final JoystickButton OperatorRightBumper = new JoystickButton(Operator, XboxController.Button.kRightBumper.value);
+    public static final Controller Driver = new Controller(0);
+    public static final Controller Operator = new Controller(1);
 
     /** Maps and initializes controls to the controllers. */
     public static void mapControls() {
-        DriverAButton.whenPressed(new ToggleIntakePosition());
-        DriverBButton.whenPressed(new PullUpClimberCommand());
-        //DriverBButton.whileHeld(new ClimbTestingForward());
-        //DriverXButton.whileHeld(new ClimbTestingReverse());
-        DriverXButton.whenPressed(new ReleaseClimberCommand());
-        DriverYButton.whenPressed(new ToggleMirrorSolenoid());
+        // Driver Controls
+        Driver.ButtonA.whenPressed(new ToggleIntakePosition());
+        Driver.ButtonB.whenPressed(new PullUpClimberCommand());
+        // Driver.ButtonB.whileHeld(new ClimbTestingForward());
+        // Driver.ButtonX.whileHeld(new ClimbTestingReverse());
+        Driver.ButtonY.whenPressed(new ReleaseClimberCommand());
+        Driver.ButtonY.whenPressed(new ToggleMirrorSolenoid());
 
-        // Inititalize the Operator Controls
-        OperatorAButton.whenHeld(new RunFeeder());
-        OperatorBButton.whenHeld(new RunIntake());
-        OperatorXButton.whenHeld(new RunFlywheelPercent(1.0));
-        OperatorYButton.whenHeld(new RunIndexer());
+        // Operator Controls
+        Operator.ButtonA.whenHeld(new RunFeeder());
+        Operator.ButtonB.whenHeld(new RunIntake());
+        Operator.ButtonX.whenHeld(new RunFlywheelPercent(1.0));
+        Operator.ButtonY.whenHeld(new RunIndexer());
 
-        OperatorLeftTriggerButton.whenPressed(new ToggleIntakePosition());
+        Operator.LeftTrigger.whenPressed(new ToggleIntakePosition());
     }
 
     /**
@@ -69,8 +38,8 @@ public class OI {
      * @return How much to move forwards/backwards
      */
     public static double getDriverSpeed () {
-        double accelerate = Driver.getRightTriggerAxis();
-        double brake = Driver.getLeftTriggerAxis();
+        double accelerate = Driver.getRightTrigger();
+        double brake = Driver.getLeftTrigger();
 
         if (Math.abs(accelerate - brake) > 0.15) {
             return (accelerate - brake) * 0.5; // maybe use 0.5 here, ONLY if tested
@@ -83,7 +52,7 @@ public class OI {
      * @return How much to turn to the left or right
      */
     public static double getDriverTurn () {
-        double driverTurn = Driver.getLeftX();
+        double driverTurn = Driver.getLeftStickX();
 
         if (Math.abs(driverTurn) > 0.15) {
             return driverTurn;
@@ -93,7 +62,7 @@ public class OI {
     }
 
     public static double getDriverIntake() {
-        double driverIntake = Driver.getRightX();
+        double driverIntake = Driver.getRightStickX();
 
         if (Math.abs(driverIntake) > 0.15) {
             return driverIntake;
@@ -103,7 +72,7 @@ public class OI {
     }
 
     public static double getOperatorLauncher() {
-        double operatorLauncher = Operator.getRightTriggerAxis();
+        double operatorLauncher = Operator.getRightTrigger();
 
         if (Math.abs(operatorLauncher) > 0.15) {
             return operatorLauncher;
