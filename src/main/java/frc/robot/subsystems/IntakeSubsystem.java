@@ -23,8 +23,7 @@ public class IntakeSubsystem extends SubsystemBase {
         intakeMotor = new TalonSRX(RobotMap.intakeMotor);
         IntakeSol = new DoubleSolenoid(PneumaticsModuleType.CTREPCM, 2, 3);
 
-        // Start with Intake up
-        IntakeSol.set(Value.kReverse);
+        retract(); // Start with Intake up
     }
 
     // This method makes the motor spin based on a percentage based voltage input
@@ -39,6 +38,14 @@ public class IntakeSubsystem extends SubsystemBase {
     // toggles the solenoid to get intake up and down
     public void togglePosition() {
         IntakeSol.toggle();
+    }
+
+    public void deploy() {
+      IntakeSol.set(Value.kForward);
+    }
+
+    public void retract() {
+      IntakeSol.set(Value.kReverse);
     }
 
 }
