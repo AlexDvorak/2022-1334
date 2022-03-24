@@ -18,10 +18,10 @@ public class OI {
     public static void mapControls() {
         // Driver Controls
         Driver.ButtonA.whenPressed(new ToggleIntakePosition());
-        Driver.ButtonB.whenPressed(new PullUpClimberCommand());
+        Driver.ButtonB.whenPressed(new PullUpClimber());
         // Driver.ButtonB.whileHeld(new ClimbTestingForward());
         // Driver.ButtonX.whileHeld(new ClimbTestingReverse());
-        Driver.ButtonY.whenPressed(new ReleaseClimberCommand());
+        Driver.ButtonY.whenPressed(new ReleaseClimber());
         Driver.ButtonY.whenPressed(new ToggleMirrorSolenoid());
 
         // Operator Controls

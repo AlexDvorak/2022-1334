@@ -7,25 +7,25 @@ package frc.robot.commands.climber;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.Robot;
 
-public class PullUpClimberCommand extends CommandBase {
+public class ReleaseClimber extends CommandBase {
 
-  public PullUpClimberCommand() {
+  public ReleaseClimber() {
     addRequirements(Robot.ClimberSubsystem);
   }
 
   @Override
   public void initialize() {
-    Robot.ClimberSubsystem.pullRobot();
+    Robot.ClimberSubsystem.releaseClimber();
   }
 
   @Override
   public void end(boolean interrupted) {
-    Robot.ClimberSubsystem.stopPullingRobot();
+    Robot.ClimberSubsystem.stopReleasingClimber();
   }
 
   @Override
   public boolean isFinished() {
-    return Robot.ClimberSubsystem.donePulling();
+    return Robot.ClimberSubsystem.doneReleasing();
   }
 
 }
