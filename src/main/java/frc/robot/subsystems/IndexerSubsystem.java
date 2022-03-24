@@ -12,8 +12,8 @@ import frc.robot.RobotMap;
 
 public class IndexerSubsystem extends SubsystemBase {
 
-  TalonFX HigherIndexer;
-  TalonFX LowerIndexer;
+  private final TalonFX HigherIndexer;
+  private final TalonFX LowerIndexer;
 
   public IndexerSubsystem() {
     HigherIndexer = new TalonFX(RobotMap.HigherIndexer);
@@ -25,11 +25,11 @@ public class IndexerSubsystem extends SubsystemBase {
     LowerIndexer.configPeakOutputReverse(-0.5);
   }
 
-  public void setIndexer1Voltage(double percent) {
+  public void runHigher(double percent) {
     HigherIndexer.set(ControlMode.PercentOutput, percent);
   }
 
-  public void setIndexer2Voltage(double percent) {
+  public void runLower(double percent) {
     LowerIndexer.set(ControlMode.PercentOutput, percent);
   }
 

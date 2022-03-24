@@ -41,7 +41,7 @@ public class ColorSensor {
         return getDetectedBall() == Robot.ourAlliance;
     }
 
-    public Alliance getDetectedBall() {
+    private Alliance getDetectedBall() {
         Color detectedColor = sensor.getColor();
         ColorMatchResult match = colorMatch.matchColor(detectedColor);
 

@@ -9,8 +9,8 @@ import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 public class AutoSequence extends SequentialCommandGroup {
   public AutoSequence() {
     addCommands(
-      new AutoDriveCommand(3000, -0.25),
-      new AutoLaunchCommand(3000)
+      new AutoDriveCommand(-0.25).withTimeout(3),
+      new AutoLaunchCommand().withTimeout(3)
     );
   }
 }

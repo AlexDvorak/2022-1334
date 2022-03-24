@@ -6,7 +6,8 @@ package frc.robot;
 
 import frc.robot.commands.*;
 import frc.robot.commands.climber.*;
-import frc.robot.commands.launcher_commands.*;
+import frc.robot.commands.launcher.*;
+// import frc.robot.commands.testing.*;
 
 public class OI {
 
@@ -24,7 +25,7 @@ public class OI {
         Driver.ButtonY.whenPressed(new ToggleMirrorSolenoid());
 
         // Operator Controls
-        Operator.ButtonA.whenHeld(new RunFeeder());
+        Operator.ButtonA.whenHeld(new FeedLauncher());
         Operator.ButtonB.whenHeld(new RunIntake());
         Operator.ButtonX.whenHeld(new RunFlywheelPercent(1.0));
         Operator.ButtonY.whenHeld(new RunIndexer());
@@ -32,53 +33,30 @@ public class OI {
         Operator.LeftTrigger.whenPressed(new ToggleIntakePosition());
     }
 
-    /**
-     * Method that takes speed to go forwards or backwards from triggers
-     * of controller depending on how hard driver presses.
-     * @return How much to move forwards/backwards
-     */
     public static double getDriverSpeed () {
         double accelerate = Driver.getRightTrigger();
         double brake = Driver.getLeftTrigger();
-
-        if (Math.abs(accelerate - brake) > 0.15) {
-            return (accelerate - brake) * 0.5; // maybe use 0.5 here, ONLY if tested
-        } else {
-            return 0.0;
-        }
+        return threshold(accelerate - brake, 0.15) * 0.5; // maybe use 0.5 here, ONLY if tested
     }
 
-    /**
-     * @return How much to turn to the left or right
-     */
     public static double getDriverTurn () {
         double driverTurn = Driver.getLeftStickX();
-
-        if (Math.abs(driverTurn) > 0.15) {
-            return driverTurn;
-        } else {
-            return 0.0;
-        }
+        return threshold(driverTurn, 0.15);
     }
 
     public static double getDriverIntake() {
         double driverIntake = Driver.getRightStickX();
-
-        if (Math.abs(driverIntake) > 0.15) {
-            return driverIntake;
-        } else {
-            return 0.0;
-        }
+        return threshold(driverIntake, 0.15);
     }
 
     public static double getOperatorLauncher() {
         double operatorLauncher = Operator.getRightTrigger();
+        return threshold(operatorLauncher, 0.15);
+    }
 
-        if (Math.abs(operatorLauncher) > 0.15) {
-            return operatorLauncher;
-        } else {
-            return 0.0;
-        }
+    /** Returns 0 if the absolute value of the input is less than the threshold, otherwise returns the input */
+    private static double threshold(double input, double thresh) {
+      return Math.abs(input) > thresh ? input : 0;
     }
 
 }
