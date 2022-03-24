@@ -13,8 +13,7 @@ import frc.robot.RobotMap;
 
 public class LauncherSubsystem extends SubsystemBase{
 
-  TalonFX LauncherLeft;
-  TalonFX LauncherRight;
+  private final TalonFX LauncherLeft, LauncherRight;
 
   public LauncherSubsystem() {
     LauncherLeft = new TalonFX(RobotMap.LauncherLeft);

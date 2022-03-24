@@ -7,7 +7,7 @@ package frc.robot.subsystems;
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
-import edu.wpi.first.wpilibj.DoubleSolenoid;
+// import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.motorcontrol.MotorControllerGroup;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
@@ -15,20 +15,17 @@ import frc.robot.RobotMap;
 
 public class DriveSubsystem extends SubsystemBase {
 
-  DoubleSolenoid mirrorSol;
+  // private final DoubleSolenoid mirrorSol;
 
   // using 4 Spark Max motor controllers, 2 for front motors, 2 for back
-  CANSparkMax L1motor;
-  CANSparkMax L2motor;
-  CANSparkMax R1motor;
-  CANSparkMax R2motor;
+  private final CANSparkMax L1motor, L2motor;
+  private final CANSparkMax R1motor, R2motor;
 
   // Grouping together the motor controllers on the left side
-  MotorControllerGroup LeftMotors;
-  MotorControllerGroup RightMotors;
+  private final MotorControllerGroup LeftMotors, RightMotors;
 
   // Differential drivetrain object (aka West Coast/Tank drive)
-  DifferentialDrive DifferentialDriveTrain;
+  private final DifferentialDrive DifferentialDriveTrain;
 
   public DriveSubsystem() {
     L1motor = new CANSparkMax(RobotMap.L1motor, MotorType.kBrushless);
@@ -65,6 +62,6 @@ public class DriveSubsystem extends SubsystemBase {
   }
 
   public void toggleMirrorSolenoid() {
-    mirrorSol.toggle();
+    // mirrorSol.toggle();
   }
 }

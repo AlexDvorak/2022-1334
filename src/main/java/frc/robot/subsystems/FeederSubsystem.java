@@ -12,7 +12,7 @@ import frc.robot.RobotMap;
 
 public class FeederSubsystem extends SubsystemBase{
 
-    TalonSRX LauncherSmallWheel;
+    private final TalonSRX LauncherSmallWheel;
 
     public FeederSubsystem() {
         LauncherSmallWheel = new TalonSRX(RobotMap.LauncherSmallWheel);

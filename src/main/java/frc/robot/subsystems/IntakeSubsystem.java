@@ -15,9 +15,9 @@ import frc.robot.RobotMap;
 
 public class IntakeSubsystem extends SubsystemBase {
 
-    TalonSRX intakeMotor;
+    private final TalonSRX intakeMotor;
 
-    DoubleSolenoid IntakeSol;
+    private final DoubleSolenoid IntakeSol;
 
     public IntakeSubsystem() {
         intakeMotor = new TalonSRX(RobotMap.intakeMotor);

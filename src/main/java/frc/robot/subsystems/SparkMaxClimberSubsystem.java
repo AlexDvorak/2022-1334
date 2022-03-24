@@ -14,8 +14,8 @@ import frc.robot.RobotMap;
 
 public class SparkMaxClimberSubsystem extends SubsystemBase {
 
-  CANSparkMax climbMotor;
-  RelativeEncoder encoder;
+  private final CANSparkMax climbMotor;
+  private final RelativeEncoder encoder;
 
   public SparkMaxClimberSubsystem() {
     climbMotor = new CANSparkMax(RobotMap.climbMotor, MotorType.kBrushless);

@@ -11,16 +11,13 @@ import frc.robot.RobotMap;
 
 public class ClimberSRXSubsystem extends SubsystemBase{
 
-    TalonSRX climbMotor;
+    private final TalonSRX climbMotor;
 
     // Limit switches
-    DigitalInput lowerSwitch;
-    DigitalInput upperSwitch;
+    private final DigitalInput lowerSwitch, upperSwitch;
 
-    boolean isClimbing = false;
-    boolean isReleasing = false;
-    int upRevolution = 0;
-    int downRevolution = 0;
+    private boolean isClimbing, isReleasing;
+    private int upRevolution, downRevolution;
 
     public ClimberSRXSubsystem() {
         climbMotor = new TalonSRX(RobotMap.climbMotor);
@@ -68,16 +65,16 @@ public class ClimberSRXSubsystem extends SubsystemBase{
 
         // C1encoder.setPosition(0);
         // C2encoder.setPosition(0);
-        //RightClimbMotor.set(ControlMode.Follower, RobotMap.LeftClimbMotor);
+        // RightClimbMotor.set(ControlMode.Follower, RobotMap.LeftClimbMotor);
 
-        //set motors to neutral so spring can expand (coast)
+        // set motors to neutral so spring can expand (coast)
         // RightClimbMotor.setNeutralMode(NeutralMode.Coast);
-        //RightClimbMotor.setIdleMode(IdleMode.kCoast);
-        //ClimbMotor.setIdleMode(IdleMode.kCoast);
-        //Climb_encoder = ClimbMotor.getEncoder();
-        //Right_encoder = RightClimbMotor.getEncoder();
+        // RightClimbMotor.setIdleMode(IdleMode.kCoast);
+        // ClimbMotor.setIdleMode(IdleMode.kCoast);
+        // Climb_encoder = ClimbMotor.getEncoder();
+        // Right_encoder = RightClimbMotor.getEncoder();
 
-        //boolean Latching = true;
+        // boolean Latching = true;
 
         // while (Latching) {
 

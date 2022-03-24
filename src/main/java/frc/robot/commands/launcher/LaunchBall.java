@@ -9,6 +9,10 @@ import edu.wpi.first.wpilibj2.command.WaitCommand;
 
 public class LaunchBall extends SequentialCommandGroup {
   public LaunchBall() {
-    addCommands(new RunFlywheelPercent(1.0), new WaitCommand(1.5), new FeedLauncher());
+    addCommands(
+      new RunFlywheelPercent(1.0),
+      new WaitCommand(1.5),
+      new FeedLauncher()
+    );
   }
 }
